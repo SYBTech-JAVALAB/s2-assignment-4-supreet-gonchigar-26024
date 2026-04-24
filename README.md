@@ -1,1 +1,4 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/hZgv9CeG)
+Enter Savings balance: 5000
+Deposit amount: 2000
+Withdraw amount: 3000
+Current Balance: Rs 4000.0
