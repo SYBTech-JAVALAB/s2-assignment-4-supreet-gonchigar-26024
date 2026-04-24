@@ -1,0 +1,79 @@
+import java.util.Scanner;
+
+abstract class BankAccount {
+
+    String name;
+    int accno;
+    double balance;
+
+    BankAccount(String name, int accno, double balance) {
+        this.name = name;
+        this.accno = accno;
+        this.balance = balance;
+    }
+
+    void deposit(double amount) {
+        balance += amount;
+        System.out.println("Deposited amount: " + amount);
+    }
+
+    abstract void withdraw(double amount);
+}
+
+class SavingsAccount extends BankAccount {
+
+    SavingsAccount(String name, int accno, double balance) {
+        super(name, accno, balance);
+    }
+
+    void withdraw(double amount) {
+        if (balance - amount >= 1000) {
+            balance -= amount;
+        } else {
+            System.out.println("Minimum balance Rs 1000 required");
+        }
+    }
+}
+
+class CurrentAccount extends BankAccount {
+
+    CurrentAccount(String name, int accno, double balance) {
+        super(name, accno, balance);
+    }
+
+    void withdraw(double amount) {
+        if (balance >= amount) {
+            balance -= amount;
+        } else {
+            System.out.println("Insufficient balance");
+        }
+    }
+}
+
+class BankManagement {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter Savings Account holder name: ");
+        String name = sc.nextLine();
+
+        System.out.print("Enter Savings Account number: ");
+        int accno = sc.nextInt();
+
+        System.out.print("Enter Savings balance: ");
+        double balance = sc.nextDouble();
+
+        SavingsAccount sa = new SavingsAccount(name, accno, balance);
+
+        System.out.print("Deposit amount: ");
+        sa.deposit(sc.nextDouble());
+
+        System.out.print("Withdraw amount: ");
+        sa.withdraw(sc.nextDouble());
+
+        System.out.println("Final Balance: " + sa.balance);
+
+        sc.close();
+    }
+}
